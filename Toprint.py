@@ -1,23 +1,22 @@
  
  ​def​ ​upgrade​(​place​,​uid​): 
- ​    ​indx​ ​=​ ​solution​.​status​[​place​] 
- ​    ​node​ ​=​ ​solution​.​lst​[​indx​] 
- ​    ​if​ ​node​.​locked​==​True​: 
+ ​    ​idx​ ​=​ ​solution​.​status​[​place​] 
+ ​    ​node​ ​=​ ​solution​.​lst​[​idx​] 
+ ​    ​if​ ​node​.​locked ​==​ True​: 
  ​        ​return​ ​False 
- ​    ​temp​ ​=​ ​indx 
+ ​    ​temp​ ​=​ ​idx 
  ​    ​queue​ ​=​ [] 
  ​    ​queue​.​append​(​temp​) 
  ​    ​m​ ​=​ ​solution​.​child 
  ​    ​while​ ​queue​: 
  ​        ​j​ ​=​ ​queue​.​pop​(​0​) 
- ​        ​if​ ​solution​.​lst​[​j​].​uid​ ​!=​ ​uid​ ​and​ ​j​!=​indx​: 
+ ​        ​if​ ​solution​.​lst​[​j​].​uid​ ​!=​ ​uid​ ​and​ ​j​!=​idx​: 
  ​            ​return​ ​False 
  ​        ​for​ ​k​ ​in​ ​range​(​j​*​m​+​1​,​j​*​m​+​m​+​1​): 
  ​            ​if​ ​k​<=​solution​.​n​-​1​: 
  ​                ​queue​.​append​(​k​) 
- ​             
  ​         
- ​    ​temp​ ​=​ ​indx 
+ ​    ​temp​ ​=​ ​idx 
  ​    ​queue​ ​=​ [] 
  ​    ​queue​.​append​(​temp​) 
  ​    ​cchild​ ​=​ ​0 
@@ -34,39 +33,39 @@
  ​    ​node​.​locked​ ​=​ ​True 
  ​    ​node​.​uid​ ​=​ ​uid 
   
- ​    ​temp​ ​=​ ​indx 
+ ​    ​temp​ ​=​ ​idx 
  ​    ​while​ ​temp​>=​0​: 
- ​        ​if​ ​temp​!=​indx​: 
+ ​        ​if​ ​temp​!=​idx​: 
  ​            ​solution​.​lst​[​temp​].​countDesc​ ​+=​1 
  ​            ​solution​.​lst​[​temp​].​countDesc​ ​-=​cchild 
  ​        ​temp​ ​=​ (​temp​-​1​)​//​solution​.​child 
  ​    ​return​ ​True 
   
- ​def​ ​unlock​(​place​,​uid​): 
- ​    ​indx​ ​=​ ​solution​.​status​[​place​] 
- ​    ​node​ ​=​ ​solution​.​lst​[​indx​] 
+ ​def​ ​unlock​(​place​, ​uid​): 
+ ​    ​idx​ ​=​ ​solution​.​status​[​place​] 
+ ​    ​node​ ​=​ ​solution​.​lst​[​idx​] 
  ​    ​if​ ​node​.​locked​ ​==​ ​False​ ​or​ ​node​.​uid​!=​uid​: 
  ​        ​return​ ​False 
  ​    ​else​: 
  ​        ​node​.​locked​ ​=​ ​False 
  ​        ​node​.​countDesc​ ​+=​1 
  ​        ​node​.​uid​ ​=​ ​None 
- ​        ​temp​ ​=​ ​indx 
+ ​        ​temp​ ​=​ ​idx 
  ​         
  ​        ​while​ ​temp​>​0​: 
  ​            ​solution​.​lst​[​temp​].​countDesc​ ​-=​1 
  ​            ​temp​ ​=​ (​temp​-​1​)​//​solution​.​child 
  ​        ​return​ ​True 
   
- ​def​ ​lock​(​place​,​uid​): 
- ​    ​indx​ ​=​ ​solution​.​status​[​place​] 
- ​    ​node​ ​=​ ​solution​.​lst​[​indx​] 
+ ​def​ ​lock​(​place​, ​uid​): 
+ ​    ​idx​ ​=​ ​solution​.​status​[​place​] 
+ ​    ​node​ ​=​ ​solution​.​lst​[​idx​] 
  ​    ​if​ ​node​.​locked​==​True​: 
  ​        ​return​ ​False 
  ​    ​elif​ ​node​.​countDesc​>​0​: 
  ​        ​return​ ​False 
  ​    ​else​: 
- ​        ​temp​ ​=​ ​indx 
+ ​        ​temp​ ​=​ ​idx 
  ​        ​while​ ​temp​>=​0​: 
  ​            ​if​ ​solution​.​lst​[​temp​].​locked​ ​==​ ​True​: 
  ​                ​return​ ​False 
@@ -75,7 +74,7 @@
  ​        ​node​.​countDesc​-=​1 
  ​        ​node​.​uid​ ​=​ ​uid 
  ​         
- ​        ​temp​ ​=​ ​indx 
+ ​        ​temp​ ​=​ ​idx 
  ​        ​while​ ​temp​>=​0​: 
  ​            ​solution​.​lst​[​temp​].​countDesc​ ​+=​1 
  ​            ​temp​ ​=​ (​temp​-​1​)​//​solution​.​child 
@@ -95,6 +94,8 @@
  ​        ​self​.​status​ ​=​ {} 
  ​        ​self​.​child​ ​=​ ​child 
  ​        ​self​.​n​ ​=​ ​n 
+
+#  ------------------ Main Function -----------------------
   
  ​n​ ​=​ ​int​(​input​()) 
  ​cn​ ​=​ ​int​(​input​()) 
