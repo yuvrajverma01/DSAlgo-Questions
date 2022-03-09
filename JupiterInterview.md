@@ -1,8 +1,13 @@
 @param n    - Length of the array
+<br>
 @param curr - To store the current sum in each iteration
+<br>
 @param mini - To store the minimum value in each iteration
+<br>
 @param j - First Pointer (starting from i+1)
+<br>
 @param k - Second Pointer (starting from n-1 ~ end of the array)
+<br>
 
 ```cpp
 
