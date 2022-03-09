@@ -33,34 +33,34 @@ nums = [-4, -2, 3 , 7, 8, 9, 4, -5]
 
 int solve(vector<int>& nums, int target) {
 
-	int n = nums.size();
+    int n = nums.size();
     int curr = 0;
     int mini = INT_MAX;
+    
+    sort(nums.begin(), nums.end());
 
-	sort(nums.begin(), nums.end());
-
-	for(int i =0; i<n;i++)
-	{
-		int j = i+1
+    for(int i =0; i<n;i++) {
+	int j = i+1
         int k = n-1;
 
         // Two Pointer Approach being Implemented
-		while(j<k)
-		{
-			int curr = nums[i]+nums[j]+nums[k];
-			int diff = abs(target-curr);
-			mini = min(mini, diff);
-            // This would result in difference being 0
-			if(curr == target) {
-                return sum;
-            } else if (curr<target) {
-                j++;   // Increase the left pointer as curr is less
-            } else {
-                k--;   // Decrease the right pointer as value is high
-            }
-		}
+	while(j<k)
+	{
+	     int curr = nums[i]+nums[j]+nums[k];
+             int diff = abs(target-curr);
+	     mini = min(mini, diff);
+	     // This would result in difference being 0
+	     if(curr == target) {
+                 return sum;
+             } else if (curr<target) {
+                 j++;   // Increase the left pointer as curr is less
+             } else {
+                 k--;   // Decrease the right pointer as value is high
+             }
 	}
-	return mini;
+     }
+
+     return mini;
 }
 
 ```
