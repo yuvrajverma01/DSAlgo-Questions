@@ -51,7 +51,7 @@ int solve(vector<int>& nums, int target) {
 	     mini = min(mini, diff);
 	     // This would result in difference being 0
 	     if(curr == target) {
-                 return sum;
+                 return diff;
              } else if (curr<target) {
                  j++;   // Increase the left pointer as curr is less
              } else {
